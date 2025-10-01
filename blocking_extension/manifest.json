@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Unproductive Video Blocker",
+  "version": "1.0",
+  "description": "Uses finetuned roberta-large to classify and block unproductive videos by their title",
+  "permissions": ["tabs", "scripting", "http://localhost:8000/"],
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["scripts/content.js"]
+    }
+  ],
+  "host_permissions": ["*://*.youtube.com/*"]
+}
